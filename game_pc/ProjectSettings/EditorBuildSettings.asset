@@ -8,8 +8,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Vuforia-BackgroundTextureAccess.unity
   - enabled: 1
-    path: Assets/Scenes/viewr.unity
-  - enabled: 1
     path: Assets/DiveUnityDemo/DiveUnityDemo.unity
+  - enabled: 1
+    path: Assets/Scenes/viewr.unity
   - enabled: 0
     path: Assets/Scenes/Vuforia-VideoPlayback.unity
