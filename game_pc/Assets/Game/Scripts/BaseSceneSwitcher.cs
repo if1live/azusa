@@ -4,24 +4,30 @@ using System.Collections;
 abstract public class BaseSceneSwitcher : MonoBehaviour {
 
     public abstract void SwitchScene();
-    private float delay = 1.0f;
+
+    // 연속으로 화면 바꾸는거 방지
+    // 일반적으로 의도한 상황이 아닐거다
+    private float uiActiveDelay = 1.0f;
 
     void Start()
     {
-        delay = 1.0f;
+        uiActiveDelay = 1.0f;
     }
 
     void Update()
     {
-        // 연속으로 화면 바꾸는거 방지
-        delay -= Time.deltaTime;
-        if (delay < 0)
+        uiActiveDelay -= Time.deltaTime;
+    }
+
+    void OnGUI () {
+        if (uiActiveDelay > 0)
         {
-            delay = 0;
-            if (Input.anyKey)
-            {
-                SwitchScene();
-            }
+            return;
+        }
+        Rect switchSceneRect = new Rect(0, 0, 200, 100);
+        if (GUI.Button(switchSceneRect, "Switch Scene")){
+            Debug.Log("Switch Scene");
+            SwitchScene();
         }
     }
 }
