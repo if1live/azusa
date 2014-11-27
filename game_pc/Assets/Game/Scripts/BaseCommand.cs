@@ -1,9 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface BaseCommand
+public abstract class BaseCommand
 {
-    void Run();
+    abstract public void Run();
+
+    public static BaseCommand ARSceneSwitch()
+    {
+        return new SceneSwitchCommand(1);
+    }
+    public static BaseCommand GameSceneSwitch()
+    {
+        return new SceneSwitchCommand(0);
+    }
 }
 
 class SceneSwitchCommand : BaseCommand
@@ -15,7 +24,7 @@ class SceneSwitchCommand : BaseCommand
         this.sceneIdx = sceneIdx;
     }
 
-    public void Run()
+    override public void Run()
     {
         Application.LoadLevel(sceneIdx);
     }

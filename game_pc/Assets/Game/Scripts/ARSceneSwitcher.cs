@@ -5,8 +5,7 @@ public class ARSceneSwitcher : BaseSceneSwitcher
 {
     public override void SwitchScene()
     {
-        BaseCommand cmd = new SceneSwitchCommand(1);
-        cmd.Run();
+        BaseCommand.ARSceneSwitch().Run();
     }
 
     
