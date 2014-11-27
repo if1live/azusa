@@ -11,5 +11,7 @@ EditorBuildSettings:
     path: Assets/Game/DiveUnityDemo.unity
   - enabled: 1
     path: Assets/Game/viewr.unity
+  - enabled: 1
+    path: Assets/InControl/Test/TestInputManager.unity
   - enabled: 0
     path: Assets/Scenes/Vuforia-VideoPlayback.unity
