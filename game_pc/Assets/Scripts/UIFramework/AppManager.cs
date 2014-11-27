@@ -15,14 +15,12 @@ public class AppManager : MonoBehaviour
 		public GameObject go;
     
     #region PUBLIC_MEMBER_VARIABLES
-		public UIEventHandler m_UIEventHandler;
     #endregion PUBLIC_MEMBER_VARIABLES
     
     #region PROTECTED_MEMBER_VARIABLES
 		public static ViewType mActiveViewType;
 		public enum ViewType
 		{
-				UIVIEW,
 				ARCAMERAVIEW
         };
     #endregion PROTECTED_MEMBER_VARIABLES
@@ -36,13 +34,11 @@ public class AppManager : MonoBehaviour
 		public virtual void InitManager ()
 		{
 				instance = this;
-				m_UIEventHandler.CloseView += OnTappedOnCloseButton;
 				InputController.SingleTapped += OnSingleTapped;
 				InputController.DoubleTapped += OnDoubleTapped;
 				InputController.BackButtonTapped += OnBackButtonTapped;
         
                 mActiveViewType = ViewType.ARCAMERAVIEW;
-				m_UIEventHandler.Bind ();
 		}
     
 		public static AppManager getInstance ()
@@ -57,12 +53,7 @@ public class AppManager : MonoBehaviour
     
 		public virtual void Draw ()
 		{
-				m_UIEventHandler.UpdateView (false);
 				switch (mActiveViewType) {
-				case ViewType.UIVIEW:
-						m_UIEventHandler.UpdateView (true);
-						break;
-            
 				case ViewType.ARCAMERAVIEW:
 						break;
 				}
@@ -74,7 +65,7 @@ public class AppManager : MonoBehaviour
 		{
 				//On hitting the home button, the app tends to turn off the flash
 				//So, setting the UI to reflect that
-				m_UIEventHandler.SetToDefault (tf);
+				//m_UIEventHandler.SetToDefault (tf);
 		}
     
     #endregion UNITY_MONOBEHAVIOUR_METHODS
@@ -85,7 +76,7 @@ public class AppManager : MonoBehaviour
 		{
 				if (mActiveViewType == ViewType.ARCAMERAVIEW) {
 						// trigger focus once
-						m_UIEventHandler.TriggerAutoFocus ();
+						//m_UIEventHandler.TriggerAutoFocus ();
 				}
 		}
 
@@ -93,22 +84,20 @@ public class AppManager : MonoBehaviour
 		{
 				if (mActiveViewType == ViewType.ARCAMERAVIEW) {
 						// trigger focus once
-						m_UIEventHandler.TriggerAutoFocus ();
+						//m_UIEventHandler.TriggerAutoFocus ();
 				}
 		}
     
 		private void OnDoubleTapped ()
 		{
 				if (mActiveViewType == ViewType.ARCAMERAVIEW) {
-						mActiveViewType = ViewType.UIVIEW;
+						//mActiveViewType = ViewType.UIVIEW;
 				}
 		}
     
 		private void OnBackButtonTapped ()
 		{
-				if (mActiveViewType == ViewType.UIVIEW) { //Hide UIMenu and Show ARCameraView
-						mActiveViewType = ViewType.ARCAMERAVIEW;
-				} else if (mActiveViewType == ViewType.ARCAMERAVIEW) { //if it's in ARCameraView
+				if (mActiveViewType == ViewType.ARCAMERAVIEW) { //if it's in ARCameraView
                     Application.Quit();
 				}
         

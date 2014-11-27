@@ -21,9 +21,6 @@ public class BackgroundTextureAppManager : AppManager
         base.Draw();
         switch(mActiveViewType)
         {
-            case ViewType.UIVIEW:
-                mCameraView = false;
-                break;
             case ViewType.ARCAMERAVIEW:
                 mCameraView = true; 
                 break;

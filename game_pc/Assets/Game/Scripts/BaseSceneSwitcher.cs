@@ -7,11 +7,11 @@ abstract public class BaseSceneSwitcher : MonoBehaviour {
 
     // 연속으로 화면 바꾸는거 방지
     // 일반적으로 의도한 상황이 아닐거다
-    private float uiActiveDelay = 1.0f;
+    private float uiActiveDelay;
 
     void Start()
     {
-        uiActiveDelay = 1.0f;
+        uiActiveDelay = 0.1f;
     }
 
     void Update()
